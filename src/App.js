@@ -25,6 +25,7 @@ function App() {
       {myPizzaArray.map((element) => {
         return (
           <Category
+            key={element.price}
             header={element.name}
             price={element.price}
             img={element.img}
