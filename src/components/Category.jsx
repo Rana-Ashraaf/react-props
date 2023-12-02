@@ -1,11 +1,8 @@
-import { useState, useEffect } from "react";
-
-export default function Category({ header, price, img }) {
+import { useState } from "react";
+import { Link } from "react-router-dom";
+export default function Category({ header, price, img, id }) {
   let [count, setMycount] = useState(1);
   let [addToCart, setAddtoCart] = useState("Add to cart");
-  useEffect(() => {
-    alert(`your total is ${price * count} $`);
-  }, [addToCart]);
 
   let handleClickPlus = () => {
     setMycount((prevState) => {
@@ -23,7 +20,7 @@ export default function Category({ header, price, img }) {
   };
 
   return (
-    <div className="card">
+    <Link to={`/list/${id}`} className="card">
       <img src={img} alt="" />
       <h1>{header}</h1>
       <p>{price}</p>
@@ -40,6 +37,6 @@ export default function Category({ header, price, img }) {
         <p>{count}</p> <span onClick={handleClickPlus}> +</span>
       </div>
       <button onClick={handleAddToCart}>{addToCart}</button>
-    </div>
+    </Link>
   );
 }
